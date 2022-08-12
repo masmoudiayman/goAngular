@@ -1,0 +1,6 @@
+p {
+    padding:20px;
+    background-color: palegreen;
+    color:green(0, 255, 98);
+    border: 1px solid green(251, 255, 0);
+}
