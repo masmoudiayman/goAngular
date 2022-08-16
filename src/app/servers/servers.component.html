@@ -1,6 +1,40 @@
+<!-- <label> Server Name</label>
+<input type="text" 
+       class="form-control" 
+       (input)="onUdateServerName($event)"> -->
+<input type="text" 
+       class="form-control" 
+       [(ngModel)]="ServerName">
+<!-- <p>{{ServerName}}</p>  -->
 <button class="btn btn-primary"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()"> Add server</button>
-<!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{serverCreationStatus}}</p>
-<p>servers works!</p>
+<!-- <p [innerText]="allowNewServer"></p> proprety binding -->
+<!-- <p>{{allowNewServer}}></p> string interpolation -->
+<!-- <p>{{serverCreationStatus}}</p> -->
+<p *ngIf="serverCreated; else NoServer "> Server was created, server name is {{ ServerName}}</p>
+<ng-template #NoServer>
+       <p>No server was created</p>
+</ng-template>
+
+<hr>
+<!-- Practicing Databinding -->
+<label> Username</label>
+<input type="text"
+       class="form-control"
+       [(ngModel)]="Username">
+<p>My username is {{Username}}</p> 
+<button class="btn btn-primary"
+        [disabled]="Username === '' "
+        (click)="AddUserName()"> Add Username
+        </button>
+<p>{{UsernameCreationStatus}}</p>
+<app-server *ngFor="let server of servers"> </app-server>
+<!-- <button class="btn btn-primary"
+        (click)="ShowDispaly =!ShowDispaly"> Display Details</button> -->
+<button class="btn btn-primary"
+        (click)="onToggleDisplay()"> Display Details</button>
+<p *ngIf="ShowDispaly"> Lets learn more about Angular</p>
+<div *ngFor="let logItem of log ; let i"
+      [ngStyle]="{backgroundColor: logItem >= 5 ? 'blue' : 'transparent' }"
+      [ngClass]="{'white-text': logItem >= 5}"> {{logItem}}</div>
